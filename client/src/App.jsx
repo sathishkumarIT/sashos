@@ -9,7 +9,6 @@ import Post from './components/Post';
 import Explore from './components/Explore';
 import UserProfile from './components/UserProfile';
 import Cart from './components/Cart';
-import Message from './components/Message';
 import Body from './components/Body';
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
            <Route path="explore" element={<Explore />} /> 
             <Route path="cart" element={<Cart />} />
             <Route path="profile" element={<UserProfile />} />
-            <Route path="message" element={<Message />} />
           </Route>
         </Routes>
       </BrowserRouter>

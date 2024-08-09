@@ -1,21 +1,19 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import MessageIcon from '@mui/icons-material/Message';
 import '../index.css';
-
+import logo from '../images/logo_img.png';
 const Body = () => {
   console.log('Body component rendered');
   return (
     <div>
       <nav className="navbar">
-        <div className="navbar-logo">Logo</div>
+      <img src={logo}className='navbar-img'/>
         <ul className="navbar-links">
           <li><a href="/body/home">Home</a></li>
           <li><a href="/body/explore">Explore</a></li>
           <li><a href="/body/cart">Cart</a></li>
           <li><a href="/body/post">Post</a></li>
-          {/* <li><a href="/body/message"><MessageIcon /></a></li> */}
           <li><a href="/body/profile"><AccountCircleIcon /></a></li>
         </ul>
       </nav>

@@ -15,7 +15,7 @@ app.use(express.static('public'));
 
 async function connectdb() {
   try {
-    await mongoose.connect("mongodb://localhost:27017/farmerWorld");
+    await mongoose.connect("mongodb+srv://sathishkumarm2022it:sasho@cluster0.mp8wikg.mongodb.net/farmerWorld?retryWrites=true&w=majority&appName=Cluster0");
     console.log("DB connection success");
     const x = 7000;
     app.listen(x, function() {
@@ -219,15 +219,8 @@ app.post('/payCartItem/:id', async (req, res) => {
   const { id } = req.params;
   const { paymentMethod } = req.body;
   try {
-    // Assuming payment processing logic is handled here
-    const cartItem = await CartModel.findById(id);
-    if (!cartItem) {
-      return res.status(404).json({ message: 'Item not found' });
-    }
-    // Placeholder for actual payment processing
-    // On successful payment:
     await CartModel.findByIdAndDelete(id);
-    res.status(200).json({ message: 'Payment successful and item deleted from cart' });
+    res.status(200).json({ message: 'Item deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

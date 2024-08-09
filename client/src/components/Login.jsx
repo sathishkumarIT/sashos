@@ -1,4 +1,4 @@
-// Login.jsx
+
 
 import React, { useState } from 'react';
 import '../index.css'
@@ -16,11 +16,10 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:7000/login', { name, password });
       const userData = response.data;
-      // Inside handleSubmit function of Login component
 if (userData && userData.id) {
   sessionStorage.setItem('userId', userData.id);
-  console.log('User ID stored in session storage:', sessionStorage.getItem('userId')); // Debugging line
-  navigate('/body/home'); // Ensure this path is correct
+  console.log('User ID stored in session storage:', sessionStorage.getItem('userId')); 
+  navigate('/body/home');
 }
 else {
         window.alert('Invalid username or password');

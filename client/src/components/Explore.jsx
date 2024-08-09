@@ -1,3 +1,4 @@
+// Explore.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../index.css';
@@ -56,14 +57,6 @@ function Explore({ onSelectProduct }) {
         });
     };
 
-    const openModal = (product) => {
-        setSelectedProduct(product);
-    };
-
-    const closeModal = () => {
-        setSelectedProduct(null);
-    };
-
     const handleMessageIconClick = (product) => {
         setSelectedProduct(product);
         fetchMessages(product._id);
@@ -94,9 +87,9 @@ function Explore({ onSelectProduct }) {
                 {products.length > 0 ? (
                     products.map((product, index) => (
                         <div
-                            key={product._id} // Use a unique key here
+                            key={product._id}
                             className="explore-image-item"
-                            onClick={() => openModal(product)}
+                            onClick={() => onSelectProduct(product)} // Pass onSelectProduct as a prop
                         >
                             <img
                                 src={`http://localhost:7000/Images/${product.image}`}
@@ -119,14 +112,22 @@ function Explore({ onSelectProduct }) {
                 {showChatBox && selectedProduct && (
                     <div className="chatbox-overlay">
                         <div className="chatbox-wrapper">
-                            <ChatBox
-                                selectedProduct={selectedProduct}
-                                messages={messages}
-                                currentUserId={currentUserId}
-                            />
-                            <button className="close-chatbox" onClick={closeChatBox}>
-                                X
-                            </button>
+                            <div className="image-section">
+                                <img
+                                    src={`http://localhost:7000/Images/${selectedProduct.image}`}
+                                    alt="Selected Image"
+                                />
+                            </div>
+                            <div className="chatbox-section">
+                                <ChatBox
+                                    selectedProduct={selectedProduct}
+                                    messages={messages}
+                                    currentUserId={currentUserId}
+                                />
+                                <button className="close-chatbox" onClick={closeChatBox}>
+                                    X
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}

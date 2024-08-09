@@ -5,10 +5,10 @@ import '../index.css';
 const UserProfile = () => {
   const [user, setUser] = useState({ name: '', email: '' });
   const [isEditing, setIsEditing] = useState(false);
-  const userId = sessionStorage.getItem('userId'); // Ensure this returns a valid userId
+  const userId = sessionStorage.getItem('userId'); 
 
   useEffect(() => {
-    if (userId) { // Only make the request if userId is present
+    if (userId) { 
       axios.get(`http://localhost:7000/user`, { params: { userId } })
         .then(response => {
           setUser(response.data);
